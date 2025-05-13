@@ -1,20 +1,20 @@
-import { useState } from 'react'
-import FormVagas from '../../components/FormVagas'
+import { useState } from 'react';
+import FormVagas from '../../components/FormVagas';
 
-import Vaga from '../../components/Vaga'
+import Vaga from '../../components/Vaga';
 
-import styles from './ListaVagas.module.css'
+import { ListVagas } from './styles';
 
 type Vaga = {
-  id: string
-  titulo: string
-  localizacao: string
-  nivel: string
-  modalidade: string
-  salarioMin: number
-  salarioMax: number
-  requisitos: string[]
-}
+  id: string;
+  titulo: string;
+  localizacao: string;
+  nivel: string;
+  modalidade: string;
+  salarioMin: number;
+  salarioMax: number;
+  requisitos: string[];
+};
 
 const vagas = [
   {
@@ -87,34 +87,36 @@ const vagas = [
     salarioMax: 5000,
     requisitos: ['HTML', 'CSS', 'JavaScript', 'jQuery']
   }
-]
+];
 
 const ListaVagas = () => {
-  const [filtro, setFiltro] = useState<string>('')
+  const [filtro, setFiltro] = useState<string>('');
 
   const vagasFiltradas = vagas.filter(
     (x) => x.titulo.toLocaleLowerCase().search(filtro) >= 0
-  )
+  );
 
   return (
-    <div>
-      <FormVagas aoPesquisar={(termo: string) => setFiltro(termo)} />
-      <ul className={styles.vagas}>
-        {vagasFiltradas.map((vag) => (
-          <Vaga
-            key={vag.id}
-            titulo={vag.titulo}
-            localizacao={vag.localizacao}
-            nivel={vag.nivel}
-            modalidade={vag.modalidade}
-            salarioMin={vag.salarioMin}
-            salarioMax={vag.salarioMax}
-            requisitos={vag.requisitos}
-          />
-        ))}
-      </ul>
-    </div>
-  )
-}
+    <>
+      <div>
+        <FormVagas aoPesquisar={(termo: string) => setFiltro(termo)} />
+        <ListVagas>
+          {vagasFiltradas.map((vag) => (
+            <Vaga
+              key={vag.id}
+              titulo={vag.titulo}
+              localizacao={vag.localizacao}
+              nivel={vag.nivel}
+              modalidade={vag.modalidade}
+              salarioMin={vag.salarioMin}
+              salarioMax={vag.salarioMax}
+              requisitos={vag.requisitos}
+            />
+          ))}
+        </ListVagas>
+      </div>
+    </>
+  );
+};
 
-export default ListaVagas
+export default ListaVagas;
