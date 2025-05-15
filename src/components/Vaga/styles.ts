@@ -39,6 +39,8 @@ export const VagaLink = styled.a`
   text-align: center;
 
   @media (max-width: 768px) {
-    display: block;
+    & {
+      display: block;
+    }
   }
 `;

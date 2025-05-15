@@ -21,8 +21,10 @@ export const Form = styled.form`
   }
 
   @media (max-width: 768px) {
-    height: auto;
-    padding: 24px 0;
+    & {
+      height: auto;
+      padding: 24px 0;
+    }
   }
 `;
 
@@ -36,6 +38,8 @@ export const HeroTitle = styled.h2`
   font-size: 48px;
 
   @media (max-width: 768px) {
-    font-size: 32px;
+    & {
+      font-size: 32px;
+    }
   }
 `;
